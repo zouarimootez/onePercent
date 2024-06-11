@@ -75,13 +75,16 @@ WSGI_APPLICATION = 'onePercent.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DJANGO_DB_NAME'),
-        'USER': os.environ.get('DJANGO_DB_USER'),
-        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD'),
-        'HOST': os.environ.get('DJANGO_DB_HOST'),
+        'NAME': os.environ.get('DJANGO_DB_NAME', 'onepercentdb'),
+        'USER': os.environ.get('DJANGO_DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('DJANGO_DB_HOST', 'db'),  # Ensure 'db' is the correct service name
         'PORT': os.environ.get('DJANGO_DB_PORT', '5432'),
     }
 }

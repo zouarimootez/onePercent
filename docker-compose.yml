@@ -15,7 +15,7 @@ services:
 
   backend:
     build: .
-    command: python backend/manage.py runserver 0.0.0.0:8000 && python backend/manage.py makemigrations && python backend/manage.py migrate
+    command: python backend/manage.py runserver 0.0.0.0:8000 
     volumes:
       - .:/app
     ports:
@@ -23,9 +23,9 @@ services:
     depends_on:
       - db
     environment:
-      - DJANGO_DB_NAME=mydatabase
-      - DJANGO_DB_USER=myuser
-      - DJANGO_DB_PASSWORD=mypassword
+      - DJANGO_DB_NAME=onepercentdb
+      - DJANGO_DB_USER=postgres
+      - DJANGO_DB_PASSWORD=postgres
       - DJANGO_DB_HOST=db
       - DJANGO_DB_PORT=5432
 
