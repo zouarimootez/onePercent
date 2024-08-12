@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-%ucd1-r+($v5zegyhs+3tb7hin8$e)4dn4f!ac7cn$zua_k4%+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'your-domain.com',
+    '8000-cs-863838390249-default.cs-europe-west1-iuzs.cloudshell.dev'
+]
+
 
 
 # Application definition
@@ -106,6 +112,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://your-domain.com',
+    'https://8000-cs-863838390249-default.cs-europe-west1-iuzs.cloudshell.dev'
 ]
 
 
