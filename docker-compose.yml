@@ -15,9 +15,9 @@ services:
 
   backend:
     build: .
-    command: python backend/manage.py runserver 0.0.0.0:8000 &&  python backend/manage.py makemigrations && python backend/manage.py migrate
+    command: sh -c "python backend/manage.py makemigrations && python backend/manage.py migrate && python backend/manage.py runserver 0.0.0.0:8000"
     volumes:
-      - .:/app
+      - .:/app/
     ports:
       - "8000:8000"
     depends_on:

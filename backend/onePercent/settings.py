@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'your-domain.com',
-    '8000-cs-863838390249-default.cs-europe-west1-iuzs.cloudshell.dev'
+    'https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev'
 ]
 
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'game',
 
 ]
 
@@ -115,7 +116,8 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 CSRF_TRUSTED_ORIGINS = [
     'https://your-domain.com',
-    'https://8000-cs-863838390249-default.cs-europe-west1-iuzs.cloudshell.dev'
+    'https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev'
+    
 ]
 
 

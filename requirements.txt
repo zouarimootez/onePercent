@@ -1,2 +1,5 @@
 Django==4.2.7
 psycopg2-binary
+djangorestframework
+channels
+channels-redis
