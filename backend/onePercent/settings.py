@@ -29,7 +29,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'your-domain.com',
-    'https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev'
+    #'https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev'
 ]
 
 
@@ -43,10 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'rest_framework.authtoken',
     'game',
     'corsheaders',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -75,13 +76,15 @@ CORS_ORIGIN_WHITELIST = [
     "https://127.0.0.1:8000",
     "https://0.0.0.0:80",
     "https://0.0.0.0:8000",
-    "https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
-    "https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
-    "http://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
-    "http://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    #"https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    #"https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    #"http://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    #"http://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
 ]
 CORS_ALLOWED_ORIGINS = [
     'https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev',
+    "http://127.0.0.1:80",
+    "http://127.0.0.1:8000",
 ]
 
 
@@ -100,6 +103,12 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 
 }
 TEMPLATES = [

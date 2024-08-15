@@ -1,4 +1,5 @@
 <template>
+<meta http-equiv="Cache-Control" content="no-store" />
   <div id="app">
     <router-view></router-view>
   </div>
