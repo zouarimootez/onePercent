@@ -63,28 +63,33 @@ MIDDLEWARE = [
     
 ]
 
-# CORS Config
-CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_ALLOW_ALL = True
+# Allow all origins
+CORS_ALLOW_ALL_ORIGINS = True
 
-CORS_ORIGIN_WHITELIST = [
-    "http://127.0.0.1:80",
-    "http://127.0.0.1:8000",
-    "http://0.0.0.0:80",
-    "http://0.0.0.0:8000",
-    "https://127.0.0.1:80",
-    "https://127.0.0.1:8000",
-    "https://0.0.0.0:80",
-    "https://0.0.0.0:8000",
-    #"https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
-    #"https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
-    #"http://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
-    #"http://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
-]
+# Or specify allowed origins
 CORS_ALLOWED_ORIGINS = [
-    'https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev',
-    "http://127.0.0.1:80",
-    "http://127.0.0.1:8000",
+    "https://localhost:80",  # Replace with your frontend URL
+    "https://0.0.0.0:80",
+    "https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    "https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+
+]
+
+# You can also allow specific methods and headers
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS',
+]
+
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+    'x-csrftoken',
+    'x-requested-with',
 ]
 
 
