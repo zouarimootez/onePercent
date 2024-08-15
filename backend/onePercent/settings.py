@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
     'game',
-
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -55,10 +57,51 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    
 ]
 
-ROOT_URLCONF = 'onePercent.urls'
+# CORS Config
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ORIGIN_WHITELIST = [
+    "http://127.0.0.1:80",
+    "http://127.0.0.1:8000",
+    "http://0.0.0.0:80",
+    "http://0.0.0.0:8000",
+    "https://127.0.0.1:80",
+    "https://127.0.0.1:8000",
+    "https://0.0.0.0:80",
+    "https://0.0.0.0:8000",
+    "https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    "https://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    "http://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+    "http://8000-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev",
+]
+CORS_ALLOWED_ORIGINS = [
+    'https://80-cs-281019498709-default.cs-europe-west1-onse.cloudshell.dev',
+]
+
+
+ROOT_URLCONF = 'onePercent.urls'
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,  # Number of items per page
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        
+    ),
+      'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',  # Only authenticated users can access
+    ),
+        'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ),
+
+}
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

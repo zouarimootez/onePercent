@@ -3,3 +3,5 @@ psycopg2-binary
 djangorestframework
 channels
 channels-redis
+django-cors-headers
+django-oauth-toolkit==2.0.0
