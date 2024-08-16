@@ -23,13 +23,14 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 # Initialize the router and register your viewsets
 router = DefaultRouter()
-router.register(r'games', GameViewSet)
-router.register(r'dice_rolls', DiceRollViewSet)
+router.register(r'opusers', OPUserViewSet, basename='opuser')
 
 # Define your URL patterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),  # Include the router's URLs
-    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+   #path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    #path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    #path('opusers/<str:opusername>/', OPUserViewSet.as_view({'get': 'retrieve'}), name='opuser-detail'),
+
 ]

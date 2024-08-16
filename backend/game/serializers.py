@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import *
-
+""""
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
@@ -9,4 +9,10 @@ class GameSerializer(serializers.ModelSerializer):
 class DiceRollSerializer(serializers.ModelSerializer):
     class Meta:
         model = DiceRoll
-        fields = '__all__'
+        fields = '__all__'"""
+
+
+class OPUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OPUser
+        fields = ['username', 'flous', 'diamond']

@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import datetime
 from pathlib import Path
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -94,27 +94,28 @@ CORS_ALLOW_HEADERS = [
 
 
 ROOT_URLCONF = 'onePercent.urls'
-REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,  # Number of items per page
-    'DEFAULT_RENDERER_CLASSES': (
-        'rest_framework.renderers.JSONRenderer',
-        
-    ),
-      'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',  # Only authenticated users can access
-    ),
-        'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ),
-        'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(minutes=120),
+    'REFRESH_TOKEN_LIFETIME': datetime.timedelta(days=7),
+}
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'apps.base.pagination.CustomPagination',
+    'PAGE_SIZE': 10,  # DEFAULT page_size,
+    'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  # for swagger
+
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    # Parser classes priority-wise for Swagger
+    'DEFAULT_PARSER_CLASSES': [
+            'rest_framework.parsers.FormParser',
+            'rest_framework.parsers.MultiPartParser',
+            'rest_framework.parsers.JSONParser',
+        ]
 }
 TEMPLATES = [
     {
@@ -139,6 +140,7 @@ WSGI_APPLICATION = 'onePercent.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 
+AUTH_USER_MODEL = 'game.OPUser'
 
 
 
